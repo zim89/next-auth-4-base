@@ -1,29 +1,69 @@
-[Authentication in Next.js 14 is easy...](https://www.youtube.com/watch?v=gPQ9SD_qpuk&t=2s)
+# Authentication in Next.js 14
 
-[GitHub](https://github.com/ski043/next-auth-nextjs-14)
+## Tech Stack
+
+- Next.js
+- NextAuth
+- TypeScript
+- Prisma
+- Supabase
 
 
-### Prisma settings
+## Features:
 
-[Prisma integration](https://supabase.com/partners/integrations/prisma)
+- 🔐 NextAuth v4
+- 🌐 OAuth Provider (Social login with GitHub)
+- ✉️ Email magic link for auth
+- 🔘 Login button
+- 🚪 Logout button
+- 📈 Exploring next-auth session
 
-in `schema.prisma` add:
+## Prerequisites
 
-```prisma
-datasource db {
-   provider  = "postgresql"
-   url       = env("DATABASE_URL")
-   directUrl = env("DIRECT_URL")
-}
+Node version 18.7.x
+
+## Cloning the repository
+
+```shell
+git clone https://github.com/zim89/next-auth-4-base.git
 ```
 
-in `.env` add `?pgbouncer=true&connection_limit=1` and change to port `5432`:
+## Install packages
+
+```shell
+npm i
+```
+
+## Setup .env file
+
 ```dotenv
-DATABASE_URL="postgres://[user].emtqqsbeqwhbhvhxosrz:[password]@aws-0-eu-central-1.pooler.supabase.com:5432/[db-name]?pgbouncer=true&connection_limit=1"
-DIRECT_URL="postgres://[user].emtqqsbeqwhbhvhxosrz:[password]@aws-0-eu-central-1.pooler.supabase.com:5432/[db-name]?pgbouncer=true&connection_limit=1"
-```
-Run in terminal:
+NEXTAUTH_URL=
+NEXTAUTH_SECRET=
 
+GITHUB_ID=
+GITHUB_SECRET=
+
+EMAIL_RESEND_HOST=
+EMAIL_RESEND_PORT=
+EMAIL_RESEND_USER=
+EMAIL_RESEND_PASSWORD=
+EMAIL_FROM=
+
+
+DATABASE_URL=
+DIRECT_URL=
 ```
-npx prisma migrate dev --name init
+
+## Setup Prisma
+
+```shell
+npx prisma generate
+npx prisma db push
 ```
+
+## Start the app
+
+```shell
+npm run dev
+```
+
